@@ -13,4 +13,5 @@
 - OntoRefine (Mappings)
 - GraphDB (Repository)
 - [SparQL anything](https://sparql-anything.readthedocs.io/stable/)
-
+- [Schema.org](https://schema.org/)
+- [foaf](http://xmlns.com/foaf/spec/)
