@@ -1,3 +1,2 @@
 data/* filter=lfs diff=lfs merge=lfs -text
-data/DS_BTS_SAL_EQTP_SEX_PCS_2023_CSV_FR/DS_BTS_SAL_EQTP_SEX_PCS_2023_data.csv filter=lfs diff=lfs merge=lfs -text
-data/DS_BTS_SAL_EQTP_SEX_PCS_2023_CSV_FR/DS_BTS_SAL_EQTP_SEX_PCS_2023_metadata.csv filter=lfs diff=lfs merge=lfs -text
+turtle/* filter=lfs diff=lfs merge=lfs -text
