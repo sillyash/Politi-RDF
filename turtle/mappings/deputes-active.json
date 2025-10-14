@@ -1,0 +1,339 @@
+{
+  "baseIRI": "http://example.com/base/",
+  "namespaces": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "rcw": "https://cours.iut-orsay.fr/rcw/",
+    "politi": "http://politiRDF.com/data/",
+    "depu": "http://politiRDF.com/data/depu",
+    "dep": "http://politiRDF.com/data/dep",
+    "schema": "http://schema.org/"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "familyName",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "nom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "givenName",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "prenom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "birthDate",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "naissance",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "birthPlace",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "villeNaissance",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "gender",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "civ",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "datePriseFonction",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "datePriseFonction",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "jobTitle",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "job",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "email",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "mail",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "twitter",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "twitter",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "facebook",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "facebook",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "website",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "website",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "nbMandat",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "nombreMandats",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "columnName": "experience",
+              "source": "column"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "experienceDepute",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "depu",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "politi",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Depute"
+          }
+        }
+      ]
+    }
+  ]
+}
