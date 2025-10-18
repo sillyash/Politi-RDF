@@ -1,10 +1,10 @@
 {
-  "baseIRI": "http://politiRDF.com/data/",
+  "baseIRI": "http://politiRDF.com/",
   "namespaces": {
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "group": "http://politiRDF.com/data/group/",
+    "group": "http://politiRDF.com/group/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "politi": "http://politiRDF.com/data/",
+    "politi": "http://politiRDF.com/",
     "schema": "https://schema.org/",
     "dcat": "http://www.w3.org/ns/dcat#",
     "dcmitype": "http://purl.org/dc/dcmitype/",
