@@ -1,13 +1,20 @@
 {
-  "baseIRI": "http://example.com/base/",
+  "baseIRI": "http://politiRDF.com/",
   "namespaces": {
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
     "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "rcw": "https://cours.iut-orsay.fr/rcw/",
-    "politi": "http://politiRDF.com/data/",
-    "depu": "http://politiRDF.com/data/depu",
-    "dep": "http://politiRDF.com/data/dep",
-    "schema": "http://schema.org/"
+    "group": "http://politiRDF.com/group/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "politi": "http://politiRDF.com/",
+    "schema": "http://schema.org/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "depu": "http://politiRDF.com/depute/",
+    "dept": "http://politiRDF.com/departement/",
+    "circo": "http://politiRDF.com/circonscription/"
   },
   "subjectMappings": [
     {
@@ -19,8 +26,34 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "familyName",
-              "source": "column"
+              "source": "constant",
+              "constant": "gender"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "if(cells.civ.value == \"M.\", \"Male\", \"Female\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "familyName"
             }
           },
           "values": [
@@ -42,8 +75,8 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "givenName",
-              "source": "column"
+              "source": "constant",
+              "constant": "givenName"
             }
           },
           "values": [
@@ -65,8 +98,34 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "birthDate",
-              "source": "column"
+              "source": "constant",
+              "constant": "name"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "cells.prenom.value + ' ' + cells.nom.value.toUppercase()",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "birthDate"
             }
           },
           "values": [
@@ -76,7 +135,17 @@
                 "source": "column"
               },
               "valueType": {
-                "type": "literal"
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "date"
+                  }
+                }
               }
             }
           ]
@@ -88,8 +157,8 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "birthPlace",
-              "source": "column"
+              "source": "constant",
+              "constant": "birthPlace"
             }
           },
           "values": [
@@ -99,7 +168,13 @@
                 "source": "column"
               },
               "valueType": {
-                "type": "literal"
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
               }
             }
           ]
@@ -111,77 +186,8 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "gender",
-              "source": "column"
-            }
-          },
-          "values": [
-            {
-              "valueSource": {
-                "columnName": "civ",
-                "source": "column"
-              },
-              "valueType": {
-                "type": "literal"
-              }
-            }
-          ]
-        },
-        {
-          "property": {
-            "transformation": {
-              "expression": "politi",
-              "language": "prefix"
-            },
-            "valueSource": {
-              "columnName": "datePriseFonction",
-              "source": "column"
-            }
-          },
-          "values": [
-            {
-              "valueSource": {
-                "columnName": "datePriseFonction",
-                "source": "column"
-              },
-              "valueType": {
-                "type": "literal"
-              }
-            }
-          ]
-        },
-        {
-          "property": {
-            "transformation": {
-              "expression": "schema",
-              "language": "prefix"
-            },
-            "valueSource": {
-              "columnName": "jobTitle",
-              "source": "column"
-            }
-          },
-          "values": [
-            {
-              "valueSource": {
-                "columnName": "job",
-                "source": "column"
-              },
-              "valueType": {
-                "type": "literal"
-              }
-            }
-          ]
-        },
-        {
-          "property": {
-            "transformation": {
-              "expression": "schema",
-              "language": "prefix"
-            },
-            "valueSource": {
-              "columnName": "email",
-              "source": "column"
+              "source": "constant",
+              "constant": "email"
             }
           },
           "values": [
@@ -203,18 +209,24 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "twitter",
-              "source": "column"
+              "source": "constant",
+              "constant": "departement"
             }
           },
           "values": [
             {
+              "transformation": {
+                "expression": "dept",
+                "language": "prefix"
+              },
               "valueSource": {
-                "columnName": "twitter",
+                "columnName": "departementCode",
                 "source": "column"
               },
               "valueType": {
-                "type": "literal"
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
               }
             }
           ]
@@ -226,87 +238,28 @@
               "language": "prefix"
             },
             "valueSource": {
-              "columnName": "facebook",
-              "source": "column"
+              "source": "constant",
+              "constant": "circonscription"
             }
           },
           "values": [
             {
               "valueSource": {
-                "columnName": "facebook",
+                "columnName": "circo",
                 "source": "column"
               },
               "valueType": {
-                "type": "literal"
-              }
-            }
-          ]
-        },
-        {
-          "property": {
-            "transformation": {
-              "expression": "politi",
-              "language": "prefix"
-            },
-            "valueSource": {
-              "columnName": "website",
-              "source": "column"
-            }
-          },
-          "values": [
-            {
-              "valueSource": {
-                "columnName": "website",
-                "source": "column"
-              },
-              "valueType": {
-                "type": "literal"
-              }
-            }
-          ]
-        },
-        {
-          "property": {
-            "transformation": {
-              "expression": "politi",
-              "language": "prefix"
-            },
-            "valueSource": {
-              "columnName": "nbMandat",
-              "source": "column"
-            }
-          },
-          "values": [
-            {
-              "valueSource": {
-                "columnName": "nombreMandats",
-                "source": "column"
-              },
-              "valueType": {
-                "type": "literal"
-              }
-            }
-          ]
-        },
-        {
-          "property": {
-            "transformation": {
-              "expression": "politi",
-              "language": "prefix"
-            },
-            "valueSource": {
-              "columnName": "experience",
-              "source": "column"
-            }
-          },
-          "values": [
-            {
-              "valueSource": {
-                "columnName": "experienceDepute",
-                "source": "column"
-              },
-              "valueType": {
-                "type": "literal"
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "integer"
+                  }
+                }
               }
             }
           ]
@@ -331,6 +284,341 @@
           "valueSource": {
             "source": "constant",
             "constant": "Depute"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "jobTitle"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "job",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "scoreParticipation"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "scoreParticipation",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "scoreLoyaute"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "scoreLoyaute",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "experience"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "\"P\" + cells.experienceDepute.value.replace(\" ans\", \"Y\").replace(\" an\", \"Y\").replace(\" mois\", \"M\").replace(\" jours\", \"D\")",
+                "language": "grel"
+              },
+              "valueSource": {
+                "source": "row_index"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "duration"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "nbMandats"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "nombreMandats",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "integer"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "twitter"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "twitter",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "facebook"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "facebook",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "website"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "language": "raw"
+              },
+              "valueSource": {
+                "columnName": "website",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "literal"
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "schema",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "memberOf"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "group",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "groupeAbrev",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "depu",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "id",
+          "source": "column"
+        }
+      },
+      "typeMappings": []
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "label"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "departementNom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "dept",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "departementCode",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "politi",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Departement"
           }
         }
       ]
