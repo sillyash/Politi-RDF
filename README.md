@@ -4,9 +4,7 @@
 
 - [Datan - Députés](https://www.data.gouv.fr/datasets/deputes-actifs-de-lassemblee-nationale-informations-et-statistiques/)
 - [Datan - Groupes](https://www.data.gouv.fr/datasets/groupes-politiques-actifs-de-lassemblee-nationale-informations-et-statistiques/)
-- [Valeurs Foncières](https://www.data.gouv.fr/datasets/demandes-de-valeurs-foncieres/)
-- [Transport](https://transport.data.gouv.fr/datasets)
-- [Salaires selon PCS par commune](https://catalogue-donnees.insee.fr/fr/catalogue/recherche/DS_BTS_SAL_EQTP_SEX_PCS)
+- [Indicateurs socio-économiques par circonscription](https://www.data.gouv.fr/datasets/portraits-des-circonscriptions-legislatives-indicateurs-economiques-et-socio-demographiques/)
 
 ## Tools
 
