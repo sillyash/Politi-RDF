@@ -23,8 +23,8 @@
 
 - OntoRefine (Mappings)
 - GraphDB (Repository)
-- [SparQL anything](https://sparql-anything.readthedocs.io/stable/)
 - [Schema.org](https://schema.org/)
+- [OpenRefine GREL Functions](https://openrefine.org/docs/manual/grelfunctions)
 
 ## Requêtes
 
@@ -48,4 +48,3 @@ WHERE {
 GROUP BY ?groupAbbrev ?groupLabel ?color
 ORDER BY DESC(?nbDeputes)
 ```
-
