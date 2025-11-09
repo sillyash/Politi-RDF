@@ -6,10 +6,33 @@
 - [Datan - Groupes](https://www.data.gouv.fr/datasets/groupes-politiques-actifs-de-lassemblee-nationale-informations-et-statistiques/)
 - [Indicateurs socio-économiques par circonscription](https://www.data.gouv.fr/datasets/portraits-des-circonscriptions-legislatives-indicateurs-economiques-et-socio-demographiques/)
 
-## Tools
+## Outils
 
 - OntoRefine (Mappings)
 - GraphDB (Repository)
 - [SparQL anything](https://sparql-anything.readthedocs.io/stable/)
 - [Schema.org](https://schema.org/)
-- [foaf](http://xmlns.com/foaf/spec/)
+
+## Requêtes
+
+### Nombre de députés par groupe parlementaire
+
+Utilisé à des fins de vérification après mappings des données via OntoText Refine.
+
+```sparql
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX politi: <http://politiRDF.com/>
+
+SELECT ?groupAbbrev ?groupLabel ?color (COUNT(?depu) AS ?nbDeputes)
+WHERE {
+    ?group rdfs:label ?groupLabel ;
+    	schema:alternateName ?groupAbbrev ;
+    	schema:color ?color .
+
+    ?depu schema:memberOf ?group .
+} 
+GROUP BY ?groupAbbrev ?groupLabel ?color
+ORDER BY DESC(?nbDeputes)
+```
+
