@@ -1,5 +1,18 @@
 # Politi RDF
 
+## Structure
+
+```text
+.
+├───data
+└───turtle
+    └───mappings
+```
+
+- Les données brutes sont dans le dossier [data](data/).
+- Les mappings OntoText Refine sont dans le dossier [turtle/mappings](turtle/mappings/).
+- Les triplets RDF sont dans le dossier [turtle](turtle/)
+
 ## Datasets
 
 - [Datan - Députés](https://www.data.gouv.fr/datasets/deputes-actifs-de-lassemblee-nationale-informations-et-statistiques/)
