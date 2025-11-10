@@ -4,9 +4,9 @@
 
 ```text
 .
-├───data
-└───turtle
-    └───mappings
+├───data/           # Données brutes (CSV)
+└───turtle/         # Fichiers RDF (Turtle)
+    └───mappings/   # Mappings OntoText Refine (JSON)
 ```
 
 - Les données brutes sont dans le dossier [data](data/).
@@ -43,7 +43,7 @@ sur les codes départementaux (ex: "2A" devient "2a" pour la Corse).
 
 ### Nombre de députés par groupe parlementaire
 
-Utilisé à des fins de vérification après mappings des données via OntoText Refine.
+> Utilisé à des fins de vérification après conversion des données.
 
 ```sparql
 PREFIX schema: <http://schema.org/>
