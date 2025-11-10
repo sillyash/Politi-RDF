@@ -16,15 +16,20 @@
 ## Datasets
 
 - [Datan - Députés](https://www.data.gouv.fr/datasets/deputes-actifs-de-lassemblee-nationale-informations-et-statistiques/)
+    - [Liste des députés actuels de l'Assemblée nationale](data/deputes-active.csv)
 - [Datan - Groupes](https://www.data.gouv.fr/datasets/groupes-politiques-actifs-de-lassemblee-nationale-informations-et-statistiques/)
+    - [Liste des groupes parlementaires actuels de l'Assemblée nationale](data/groupes-active.csv)
 - [Indicateurs socio-économiques par circonscription](https://www.data.gouv.fr/datasets/portraits-des-circonscriptions-legislatives-indicateurs-economiques-et-socio-demographiques/)
+    - [Correspondance entre les communes et les circonscriptions législatives](data/dept_communes_circo.csv)
+    - [Indicateurs socio-économiques par circonscription législative](data/stat-circo-2022.csv)
+    - [Description des indicateurs socio-économiques](data/stat-circo-info-variables.csv)
 
 ## Outils
 
-- OntoRefine (Mappings)
+- OntoRefine (Mappings & conversion RDF)
 - GraphDB (Repository)
-- [Schema.org](https://schema.org/)
-- [OpenRefine GREL Functions](https://openrefine.org/docs/manual/grelfunctions)
+- [Schema.org](https://schema.org/) (Vocabulaire principal)
+- [OpenRefine GREL Functions](https://openrefine.org/docs/manual/grelfunctions) (Utilisation dans OntoRefine)
 
 ## Requêtes
 
