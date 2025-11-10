@@ -1,5 +1,17 @@
 # Politi RDF
 
+<!-- TOC -->
+
+- [Politi RDF](#politi-rdf)
+  - [Structure](#structure)
+  - [Datasets](#datasets)
+    - [Modifications effectuées](#modifications-effectuées)
+  - [Outils](#outils)
+  - [Requêtes](#requêtes)
+    - [Nombre de députés par groupe parlementaire](#nombre-de-députés-par-groupe-parlementaire)
+
+<!-- /TOC -->
+
 ## Structure
 
 ```text
