@@ -24,6 +24,14 @@
     - [Indicateurs socio-économiques par circonscription législative](data/stat-circo-2022.csv)
     - [Description des indicateurs socio-économiques](data/stat-circo-info-variables.csv)
 
+### Modifications effectuées
+
+Sur le [dataset de correspondance entre les communes et les circonscriptions législatives](data/dept_communes_circo.csv),
+nous avons ajouté une colonne `cleaned_dep` qui correspond à la colonne `DEP`, avec des minuscules au lieu de majuscules
+sur les codes départementaux (ex: "2A" devient "2a" pour la Corse).
+
+> Ceci afin de faciliter le mapping avec les données des députés.
+
 ## Outils
 
 - OntoRefine (Mappings & conversion RDF)
