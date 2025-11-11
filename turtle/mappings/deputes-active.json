@@ -245,7 +245,7 @@
           "values": [
             {
               "valueSource": {
-                "columnName": "circo",
+                "columnName": "circo_clean",
                 "source": "column"
               },
               "valueType": {

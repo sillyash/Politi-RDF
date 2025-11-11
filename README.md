@@ -39,11 +39,29 @@
 
 ### Modifications effectuées
 
+Sur le dataset des [députés actifs de l'Assemblée nationale](data/deputes-active.csv),
+nous avons ajouté une colonne `circo_clean` qui correspond à la colonne `circo`, avec
+un identifiant absolu pour les circonscriptions législatives (ex: "1" devient "1001").
+
+> Ceci afin de faciliter le mapping avec les données des circonscriptions législatives.
+
+Formule Excel utilisée:
+
+```excel
+=IF(LEN(L2)=2, CONCAT(UPPER(L2),TEXT(M2, "000")), CONCAT(UPPER(L2),TEXT(M2, "00")))
+```
+
 Sur le [dataset de correspondance entre les communes et les circonscriptions législatives](data/dept_communes_circo.csv),
 nous avons ajouté une colonne `cleaned_dep` qui correspond à la colonne `DEP`, avec des minuscules au lieu de majuscules
 sur les codes départementaux (ex: "2A" devient "2a" pour la Corse).
 
 > Ceci afin de faciliter le mapping avec les données des députés.
+
+Formule Excel utilisée:
+
+```excel
+=LOWER(B2)
+```
 
 Sur le [dataset des indicateurs socio-économiques par circonscription législative](data/stat-circo-2022.csv),
 nous avons remplacé les 'nd' quand la valeur est 'non disponible' par des valeurs vides.
@@ -53,8 +71,7 @@ nous avons remplacé les 'nd' quand la valeur est 'non disponible' par des valeu
 > Ceci afin de rendre les décimaux corrects pour *xsd* et les valeurs nulles détectables par OntoText Refine.
 
 Sur le dataset des [descriptifs des indicateurs socio-économiques](data/stat-circo-info-variables.csv),
-nous avons ajouté une lignes avec les noms de colonne, retiré deux lignes inutiles
-(description du nom de circonscription et du numéro de circonscription).
+nous avons ajouté la première ligne avec les noms de colonnes, et retiré deux lignes inutiles (description du nom de circonscription et du numéro de circonscription).
 
 Nous avons également renommé toutes les variables (colonne 'Stat') pour enlever les `_` et accents.
 
