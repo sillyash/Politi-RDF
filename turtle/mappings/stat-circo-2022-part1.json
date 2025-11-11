@@ -2767,7 +2767,7 @@
             },
             "valueSource": {
               "source": "constant",
-              "constant": "litCom"
+              "constant": "iltCom"
             }
           },
           "values": [
@@ -2800,13 +2800,46 @@
             },
             "valueSource": {
               "source": "constant",
-              "constant": "litDep"
+              "constant": "iltDep"
             }
           },
           "values": [
             {
               "valueSource": {
                 "columnName": "ilt_dep",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "iltFra"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ilt_fra",
                 "source": "column"
               },
               "valueType": {
