@@ -1,0 +1,96 @@
+{
+  "baseIRI": "http://example.com/base/",
+  "namespaces": {
+    "group": "http://politiRDF.com/group/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "politi": "http://politiRDF.com/",
+    "schema": "http://schema.org/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "depu": "http://politiRDF.com/depute/",
+    "dept": "http://politiRDF.com/departement/",
+    "circo": "http://politiRDF.com/circonscription/",
+    "comm": "http://politiRDF.com/commune/",
+    "reg": "http://politiRDF.com/region/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "describe"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Description",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "rdfs",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seeAlso"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Source",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "language_literal",
+                "language": {
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "fr"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "politi",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "Stat",
+          "source": "column"
+        }
+      },
+      "typeMappings": []
+    }
+  ]
+}
