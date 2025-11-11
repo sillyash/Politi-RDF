@@ -86,6 +86,7 @@ ORDER BY DESC(?nbDeputes)
 ### Toutes les statistiques par circonscription avec description
 
 ```sparql
+PREFIX schema: <http://schema.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX politi: <http://politiRDF.com/>
 
@@ -93,10 +94,13 @@ SELECT ?cLabel ?statLabel ?val
 WHERE {
     ?c a politi:Circonscription ;
     	rdfs:label ?cLabel ;
+    	schema:containedIn ?dep ;
     	?stat ?val .
     
     ?stat rdfs:describe ?statLabel .
+    ?dep rdfs:label ?depLabel .
+    
+    FILTER(?depLabel = "Ain"@fr)
 } 
 ORDER BY ?cLabel
-LIMIT 100
 ```
