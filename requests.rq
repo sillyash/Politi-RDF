@@ -1,6 +1,53 @@
 PREFIX schema: <http://schema.org/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wd: <http://www.wikidata.org/entity/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX politi: <http://politiRDF.com/>
+
+
+#------------------------------Requete INSERT---------------------------------
+# Requetes INSERT pour enrichir le graphe à partir de wikidata ou autres.
+
+# Positions géographiques des départements.
+
+INSERT {
+    ?dep owl:sameAs ?wikidataDepartment ;
+    	politi:coord ?coord.
+}
+WHERE
+{
+    service <https://query.wikidata.org/sparql> {
+    	?wikidataDepartment wdt:P31 wd:Q6465;
+        					wdt:P625 ?coord;
+        					rdfs:label ?depLabel .
+    }
+    
+	?dep a politi:Departement ;
+		rdfs:label ?depLabel .
+}
+
+
+# Remplacer les lieux de naissance par des éléments du graphe politi:Commune.
+
+DELETE {
+    ?depu schema:birthPlace ?communeNaissance.
+}
+INSERT {
+    ?depu schema:birthPlace ?commune.
+}WHERE {
+    ?depu a politi:Depute;
+    	schema:name ?depuName;
+    	schema:birthPlace ?communeNaissance.
+    
+    	?commune a politi:Commune; 
+            rdfs:label ?communeNaissance.
+}
+
+
+#------------------------------Requete SELECT---------------------------------
+#Requetes SELECT pour afficher et mettre en lien les données.
+
 
 # Nombre de députés par groupe parlementaire
 # Utilisé à des fins de vérification après conversion des données.
@@ -72,3 +119,62 @@ WHERE {
 }
 GROUP BY ?partyAbbr ?partyName
 ORDER BY DESC(?avg)
+
+# Proportion de retraités par départements
+# Renvoie également les coordonnées pour affichage sur une carte.
+
+SELECT ?dep ?depLabel ?coord (AVG(?val) as ?avg)
+WHERE {
+    ?circ a politi:Circonscription ;
+    rdfs:label ?circLabel ;
+    schema:containedIn ?dep ;
+    politi:inactret ?val .
+
+    ?dep  rdfs:label ?depLabel ;
+    politi:coord ?coord .
+}GROUP BY ?dep ?depLabel ?coord
+
+# Députés nés dans une commune appartenant
+# à leur circonscription actuelle.
+
+#----- sans requête INSERT/DELETE --------
+SELECT ?depuName ?CommuneNaissance
+WHERE {
+    ?depu a politi:Depute;
+    	schema:name ?depuName;
+    	schema:birthPlace ?CommuneNaissance;
+    	politi:circonscription/schema:containsPlace/rdfs:label ?cirCommune.
+    
+        filter(?cirCommune = ?CommuneNaissance)
+}
+
+#----- après requête INSERT/DELETE --------
+SELECT ?depuName ?comLabel
+WHERE {
+    ?depu a politi:Depute;
+    	schema:name ?depuName;
+    	schema:birthPlace ?CommuneNaissance;
+    	politi:circonscription/schema:containsPlace ?CommuneNaissance.
+    
+        ?CommuneNaissance rdfs:label ?comLabel.
+}
+
+
+# Proportion des députés nés dans une commune
+# appartenant à leur circonscription actuelle.
+
+#----- après requête INSERT/DELETE --------
+SELECT (xsd:float(?depuNaissance)/xsd:float(COUNT(?depuAll)) AS ?proportion)
+WHERE {
+    ?depuAll a politi:Depute.
+    
+    {	
+        SELECT (COUNT(?depu) AS ?depuNaissance)
+        WHERE
+        {
+            ?depu a politi:Depute;
+            schema:birthPlace ?CommuneNaissance;
+            politi:circonscription/schema:containsPlace ?CommuneNaissance.
+    	}
+    }
+}GROUP BY ?depuNaissance
