@@ -244,22 +244,18 @@
           },
           "values": [
             {
+              "transformation": {
+                "expression": "circo",
+                "language": "prefix"
+              },
               "valueSource": {
                 "columnName": "circo_clean",
                 "source": "column"
               },
               "valueType": {
-                "type": "datatype_literal",
-                "datatype": {
-                  "transformation": {
-                    "expression": "xsd",
-                    "language": "prefix"
-                  },
-                  "valueSource": {
-                    "source": "constant",
-                    "constant": "integer"
-                  }
-                }
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
               }
             }
           ]
