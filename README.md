@@ -45,6 +45,13 @@ sur les codes départementaux (ex: "2A" devient "2a" pour la Corse).
 
 > Ceci afin de faciliter le mapping avec les données des députés.
 
+Sur le [dataset des indicateurs socio-économiques par circonscription législative](data/stat-circo-2022.csv),
+nous avons remplacé les 'nd' quand la valeur est 'non disponible' par des valeurs vides.
+
+Également, nous avons remplacé les nombres décimaux à virgule `,` par des points `.`: e.g. `34,21` → `34.21`.
+
+> Ceci afin de rendre les décimaux corrects pour *xsd* et les valeurs nulles détectables par OntoText Refine.
+
 Sur le dataset des [descriptifs des indicateurs socio-économiques](data/stat-circo-info-variables.csv),
 nous avons ajouté une lignes avec les noms de colonne, retiré deux lignes inutiles
 (description du nom de circonscription et du numéro de circonscription).
