@@ -158,7 +158,7 @@
           "values": [
             {
               "transformation": {
-                "expression": "cells.libdep.value + ', ' + cells.circo.value.substring(2).replace('0', '') + 'e circonscription'",
+                "expression": "cells.libdep.value + ', ' + cells.circo.value.substring(cells.DEP.value.length()).replace('0', '') + 'e circonscription'",
                 "language": "grel"
               },
               "valueSource": {
