@@ -9,6 +9,7 @@
   - [Outils](#outils)
   - [Requêtes](#requêtes)
     - [Nombre de députés par groupe parlementaire](#nombre-de-députés-par-groupe-parlementaire)
+    - [Toutes les statistiques par circonscription avec description](#toutes-les-statistiques-par-circonscription-avec-description)
 
 <!-- /TOC -->
 
@@ -72,4 +73,22 @@ WHERE {
 } 
 GROUP BY ?groupAbbrev ?groupLabel ?color
 ORDER BY DESC(?nbDeputes)
+```
+
+### Toutes les statistiques par circonscription avec description
+
+```sparql
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX politi: <http://politiRDF.com/>
+
+SELECT ?cLabel ?statLabel ?val
+WHERE {
+    ?c a politi:Circonscription ;
+    	rdfs:label ?cLabel ;
+    	?stat ?val .
+    
+    ?stat rdfs:describe ?statLabel .
+} 
+ORDER BY ?cLabel
+LIMIT 100
 ```
