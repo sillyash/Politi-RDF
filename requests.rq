@@ -1,0 +1,74 @@
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX politi: <http://politiRDF.com/>
+
+# Nombre de députés par groupe parlementaire
+# Utilisé à des fins de vérification après conversion des données.
+
+SELECT ?groupAbbrev ?groupLabel ?color (COUNT(?depu) AS ?nbDeputes)
+WHERE {
+    ?group rdfs:label ?groupLabel ;
+    	schema:alternateName ?groupAbbrev ;
+    	schema:color ?color .
+
+    ?depu schema:memberOf ?group .
+} 
+GROUP BY ?groupAbbrev ?groupLabel ?color
+ORDER BY DESC(?nbDeputes)
+
+# Toutes les statistiques des circonscriptions de l'Ain
+# avec description de la statistique et source
+
+SELECT ?cLabel ?statLabel ?val ?statSource
+WHERE {
+    ?c a politi:Circonscription ;
+    	rdfs:label ?cLabel ;
+    	schema:containedIn ?dep ;
+    	?stat ?val .
+    
+    ?stat a politi:Statistic ;
+    	rdfs:describe ?statLabel ;
+    	rdfs:seeAlso ?statSource .
+    
+    ?dep rdfs:label ?depLabel .
+    
+    FILTER(?depLabel = "Ain"@fr)
+} 
+ORDER BY ?cLabel
+
+# Toutes les statistiques des circonscriptions par député
+# avec description de la statistique et source
+
+SELECT ?depuLabel ?desc ?val ?source
+WHERE {
+    ?depu a politi:Depute ;
+    	politi:circonscription ?circo ;
+    	schema:name ?depuLabel .
+    
+    ?circo ?stat ?val .
+    
+    ?stat a politi:Statistic ;
+    	rdfs:seeAlso ?source ;
+    	rdfs:describe ?desc .
+}
+ORDER BY ?depuLabel
+LIMIT 100
+
+# Moyenne de la proportion de propriétaires dans
+# les circonscriptions par parti politique
+
+SELECT ?partyAbbr ?partyName (AVG(?val) AS ?avg)
+WHERE {
+    ?depu a politi:Depute ;
+    	politi:circonscription ?circo ;
+    	schema:name ?depuLabel ;
+    	schema:memberOf ?parti .
+    
+    ?parti a schema:PoliticalParty ;
+    	rdfs:label ?partyName ;
+    	schema:alternateName ?partyAbbr .
+    
+    ?circo politi:proprio ?val .
+}
+GROUP BY ?partyAbbr ?partyName
+ORDER BY DESC(?avg)

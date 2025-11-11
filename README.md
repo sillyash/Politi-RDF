@@ -7,9 +7,11 @@
   - [Datasets](#datasets)
     - [Modifications effectuées](#modifications-effectuées)
   - [Outils](#outils)
-  - [Requêtes](#requêtes)
-    - [Nombre de députés par groupe parlementaire](#nombre-de-députés-par-groupe-parlementaire)
-    - [Toutes les statistiques par circonscription avec description](#toutes-les-statistiques-par-circonscription-avec-description)
+  - [Installation](#installation)
+    - [Prérequis](#prérequis)
+    - [Cloner le dépôt](#cloner-le-dépôt)
+    - [Créer le repository dans GraphDB](#créer-le-repository-dans-graphdb)
+    - [Importer les données RDF](#importer-les-données-rdf)
 
 <!-- /TOC -->
 
@@ -86,50 +88,32 @@ Nous avons également renommé toutes les variables (colonne 'Stat') pour enleve
 - [Schema.org](https://schema.org/) (Vocabulaire principal)
 - [OpenRefine GREL Functions](https://openrefine.org/docs/manual/grelfunctions) (Utilisation dans OntoRefine)
 
-## Requêtes
+## Installation
 
-### Nombre de députés par groupe parlementaire
+### Prérequis
 
-> Utilisé à des fins de vérification après conversion des données.
+- Git
+- Git LFS
+- GraphDB
 
-```sparql
-PREFIX schema: <http://schema.org/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX politi: <http://politiRDF.com/>
+### Cloner le dépôt
 
-SELECT ?groupAbbrev ?groupLabel ?color (COUNT(?depu) AS ?nbDeputes)
-WHERE {
-    ?group rdfs:label ?groupLabel ;
-    	schema:alternateName ?groupAbbrev ;
-    	schema:color ?color .
-
-    ?depu schema:memberOf ?group .
-} 
-GROUP BY ?groupAbbrev ?groupLabel ?color
-ORDER BY DESC(?nbDeputes)
+```bash
+git clone https://github.com/sillyash/Politi-RDF.git
 ```
 
-### Toutes les statistiques par circonscription avec description
+### Créer le repository dans GraphDB
 
-```sparql
-PREFIX schema: <http://schema.org/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX politi: <http://politiRDF.com/>
+- Ouvrir GraphDB dans le navigateur
+- Aller dans 'Repositories' > 'Create new repository'
+- Type: GraphDB repository
+- Ruleset: RDFS Plus (Défaut)
+- Cocher: 'Disable owl:sameAs' (Défaut)
 
-SELECT ?cLabel ?statLabel ?val ?statSource
-WHERE {
-    ?c a politi:Circonscription ;
-    	rdfs:label ?cLabel ;
-    	schema:containedIn ?dep ;
-    	?stat ?val .
-    
-    ?stat a politi:Statistic ;
-    	rdfs:describe ?statLabel ;
-    	rdfs:seeAlso ?statSource .
-    
-    ?dep rdfs:label ?depLabel .
-    
-    FILTER(?depLabel = "Ain"@fr)
-} 
-ORDER BY ?cLabel
-```
+### Importer les données RDF
+
+- Aller dans 'Import' > 'Files'
+- Sélectionner tous les fichiers `.ttl` présents dans le dossier [`turtle/`](turtle/)
+- Cliquer sur 'Import'
+
+Les requêtes SPARQL sont dans [`requests.rq`](requests.rq).
