@@ -48,8 +48,10 @@ un identifiant absolu pour les circonscriptions législatives (ex: "1" devient "
 Formule Excel utilisée:
 
 ```excel
-=IF(LEN(L2)=2, CONCAT(UPPER(L2),TEXT(M2, "000")), CONCAT(UPPER(L2),TEXT(M2, "00")))
+=IF(LEN(L2)<3, CONCAT(UPPER(L2),TEXT(M2, "000")), CONCAT(UPPER(L2),TEXT(M2, "00")))
 ```
+
+*Fait sans ChatGPT mais à la sueur de mon front.*
 
 Sur le [dataset de correspondance entre les communes et les circonscriptions législatives](data/dept_communes_circo.csv),
 nous avons ajouté une colonne `cleaned_dep` qui correspond à la colonne `DEP`, avec des minuscules au lieu de majuscules
