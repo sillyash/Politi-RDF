@@ -90,7 +90,18 @@
           "source": "column"
         }
       },
-      "typeMappings": []
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "politi",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Statistic"
+          }
+        }
+      ]
     }
   ]
 }
