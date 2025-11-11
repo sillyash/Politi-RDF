@@ -45,6 +45,14 @@ sur les codes départementaux (ex: "2A" devient "2a" pour la Corse).
 
 > Ceci afin de faciliter le mapping avec les données des députés.
 
+Sur le dataset des [descriptifs des indicateurs socio-économiques](data/stat-circo-info-variables.csv),
+nous avons ajouté une lignes avec les noms de colonne, retiré deux lignes inutiles
+(description du nom de circonscription et du numéro de circonscription).
+
+Nous avons également renommé toutes les variables (colonne 'Stat') pour enlever les `_` et accents.
+
+> Ceci afin de faciliter le mapping avec les données des statistiques par circonscription.
+
 ## Outils
 
 - OntoRefine (Mappings & conversion RDF)
