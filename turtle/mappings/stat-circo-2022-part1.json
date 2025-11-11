@@ -1,0 +1,2842 @@
+{
+  "baseIRI": "http://example.com/base/",
+  "namespaces": {
+    "group": "http://politiRDF.com/group/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "politi": "http://politiRDF.com/",
+    "schema": "http://schema.org/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "depu": "http://politiRDF.com/depute/",
+    "dept": "http://politiRDF.com/departement/",
+    "circo": "http://politiRDF.com/circonscription/",
+    "comm": "http://politiRDF.com/commune/",
+    "reg": "http://politiRDF.com/region/"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inscrit22"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "Inscrit_22",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popLegal19"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_légal_19",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popLegal13"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_légal_13",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "tvarPop"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "tvar_pop",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popPoleAav"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_pole_aav",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popCourAav"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_cour_aav",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popHorsaav"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_horsaav",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popUrb"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_urb",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popRurPeriu"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_rur_periu",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "popRurNonPeriu"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "pop_rur_non_periu",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "ageMoyen"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "age_moyen",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "dec90"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "dec90",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "dec75"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "dec75",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "dec50"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "dec50",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "dec25"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "dec25",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "dec10"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "dec10",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "int"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actemp"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actemp",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actcho"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actcho",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactret"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactret",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactetu"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactetu",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactm14"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactm14",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactaut"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactaut",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actempHom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actemp_hom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actchoHom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actcho_hom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactretHom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactret_hom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactetuHom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactetu_hom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactm14Hom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactm14_hom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactautHom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactaut_hom",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actempFem"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actemp_fem",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actchoFem"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actcho_fem",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactretFem"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactret_fem",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactetuFem"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactetu_fem",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactm14Fem"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactm14_fem",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "inactautFem"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "inactaut_fem",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipPEU"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_PEU",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipCAP"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_CAP",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipBAC"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_BAC",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipBAC2"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_BAC2",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipBAC3"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_BAC3",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipBAC5"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_BAC5",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actdipBAC3P"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "actdip_BAC3P",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actAgr"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_agr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actArt"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_art",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actCad"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_cad",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actInt"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_int",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actEmp"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_emp",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actOuv"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_ouv",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "actCho"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "act_cho",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "logRes"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "log_res",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "logSec"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "log_sec",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "logVac"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "log_vac",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "proprio"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "proprio",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "locatai"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "locatai",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "gratuit"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "gratuit",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "maison"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "maison",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "ach90"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ach90",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "mfuel"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "mfuel",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menSeul"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_seul",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menCoupae"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_coupae",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menCoupse"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_coupse",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menMonop"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_monop",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menSfam"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_sfam",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menSeulCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_seul_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menCoupseCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_coupse_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menCoupaeCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_coupae_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menMonopCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_monop_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "menComplexeCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "men_complexe_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulHom1829"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_hom1829",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulHom3059"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_hom3059",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulHom6074"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_hom6074",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulHom7584"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_hom7584",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulHom85"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_hom85",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulFem1829"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_fem1829",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulFem3059"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_fem3059",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulFem6074"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_fem6074",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulFem7584"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_fem7584",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "seulFem85"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "seul_fem85",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "iranrLog"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "iranr_log",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "iranrCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "iranr_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "iranrDep"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "iranr_dep",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "iranrFra"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "iranr_fra",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "iranrEtr"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "iranr_etr",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "mobresid"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "mobresid",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "litCom"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ilt_com",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "property": {
+            "transformation": {
+              "expression": "politi",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "litDep"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "ilt_dep",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "xsd",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "decimal"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "circo",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "circo",
+          "source": "column"
+        }
+      },
+      "typeMappings": []
+    }
+  ]
+}
