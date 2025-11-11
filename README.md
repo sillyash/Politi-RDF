@@ -97,14 +97,17 @@ PREFIX schema: <http://schema.org/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX politi: <http://politiRDF.com/>
 
-SELECT ?cLabel ?statLabel ?val
+SELECT ?cLabel ?statLabel ?val ?statSource
 WHERE {
     ?c a politi:Circonscription ;
     	rdfs:label ?cLabel ;
     	schema:containedIn ?dep ;
     	?stat ?val .
     
-    ?stat rdfs:describe ?statLabel .
+    ?stat a politi:Statistic ;
+    	rdfs:describe ?statLabel ;
+    	rdfs:seeAlso ?statSource .
+    
     ?dep rdfs:label ?depLabel .
     
     FILTER(?depLabel = "Ain"@fr)
