@@ -163,6 +163,11 @@ WHERE {
     politi:coord ?coord .
 }GROUP BY ?dep ?depLabel ?coord
 
+
+
+
+#------------- Ne marche pas --------------
+
 # Députés nés dans une commune appartenant
 # à leur circonscription actuelle.
 
@@ -192,6 +197,24 @@ WHERE {
 # Proportion des députés nés dans une commune
 # appartenant à leur circonscription actuelle.
 
+#----- sans requête INSERT/DELETE --------
+SELECT (xsd:float(?depuNaissance)/xsd:float(COUNT(?depuAll)) AS ?proportion)
+WHERE {
+    ?depuAll a politi:Depute.
+    
+    {	
+        SELECT (COUNT(?depu) AS ?depuNaissance)
+        WHERE
+        {
+            ?depu a politi:Depute;
+            schema:birthPlace ?CommuneNaissance;
+    		politi:circonscription/schema:containsPlace/rdfs:label ?cirCommune.
+    
+        	filter(?cirCommune = ?CommuneNaissance)
+    	}
+    }
+}GROUP BY ?depuNaissance
+
 #----- après requête INSERT/DELETE --------
 SELECT (xsd:float(?depuNaissance)/xsd:float(COUNT(?depuAll)) AS ?proportion)
 WHERE {
@@ -204,6 +227,49 @@ WHERE {
             ?depu a politi:Depute;
             schema:birthPlace ?CommuneNaissance;
             politi:circonscription/schema:containsPlace ?CommuneNaissance.
+    	}
+    }
+}GROUP BY ?depuNaissance
+
+# Proportion des députés nés dans un département
+# appartenant à leur circonscription actuelle.
+
+#----- sans requête INSERT/DELETE --------
+SELECT (xsd:float(?depuNaissance)/xsd:float(COUNT(?depuAll)) AS ?proportion)
+WHERE {
+    ?depuAll a politi:Depute.
+    
+    {	
+        SELECT (COUNT(?depu) AS ?depuNaissance)
+        WHERE
+        {
+            ?depu a politi:Depute;
+            schema:birthPlace ?communeNaissance;
+    		politi:circonscription/schema:containedIn ?dept.
+    		
+            ?commune rdfs:label ?comLabel; 
+                politi:circonscription/schema:containedIn ?dept.
+            
+        	filter(?comLabel = ?communeNaissance)
+    	}
+    }
+}GROUP BY ?depuNaissance
+
+#----- après requête INSERT/DELETE --------
+
+SELECT (xsd:float(?depuNaissance)/xsd:float(COUNT(?depuAll)) AS ?proportion)
+WHERE {
+    ?depuAll a politi:Depute.
+    
+    {	
+        SELECT (COUNT(?depu) AS ?depuNaissance)
+        WHERE
+        {
+            ?depu a politi:Depute;
+            schema:birthPlace ?communeNaissance;
+    		politi:circonscription/schema:containedIn ?dept.
+    		
+            ?communeNaissance politi:circonscription/schema:containedIn ?dept.
     	}
     }
 }GROUP BY ?depuNaissance
