@@ -1,5 +1,5 @@
 {
-  "baseIRI": "http://example.com/base/",
+  "baseIRI": "http://politiRDF.com/",
   "namespaces": {
     "group": "http://politiRDF.com/group/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -15,7 +15,9 @@
     "dept": "http://politiRDF.com/departement/",
     "circo": "http://politiRDF.com/circonscription/",
     "comm": "http://politiRDF.com/commune/",
-    "reg": "http://politiRDF.com/region/"
+    "reg": "http://politiRDF.com/region/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "circogeo": "http://politiRDF.com/circonscription/geo/"
   },
   "subjectMappings": []
 }
