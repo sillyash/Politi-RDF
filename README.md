@@ -89,6 +89,11 @@ afin de pouvoir l'importer dans OntoRefine, car le JSON ne fonctonnait pas.
 > Ceci car Wikidata ne possède pas les circonscriptions législatives françaises en tant qu'entités géographiques,
 > et nous voulions inclure les données géographiques dans le RDF.
 
+Nous avons ensuite créé une colonne `code_circo_clean` car les codes de circonscriptions étaient erronés.
+Il a fallu une formule Excel puis des ajustements à la main.
+
+> Ceci afin de faciliter le mapping avec les données des circonscriptions.
+
 ## Outils
 
 - OntoRefine (Mappings & conversion RDF)

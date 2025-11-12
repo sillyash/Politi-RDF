@@ -40,7 +40,7 @@
                 "language": "prefix"
               },
               "valueSource": {
-                "columnName": "codeCirconscription",
+                "columnName": "circo_code_clean",
                 "source": "column"
               },
               "valueType": {
@@ -58,7 +58,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "codeCirconscription",
+          "columnName": "circo_code_clean",
           "source": "column"
         }
       },
@@ -117,7 +117,7 @@
           "language": "prefix"
         },
         "valueSource": {
-          "columnName": "codeCirconscription",
+          "columnName": "circo_code_clean",
           "source": "column"
         }
       },
