@@ -1,10 +1,17 @@
-PREFIX schema: <http://schema.org/>
-PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-PREFIX wd: <http://www.wikidata.org/entity/>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX politi: <http://politiRDF.com/>
 
+PREFIX schema: <http://schema.org/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX p: <http://www.wikidata.org/prop/>
+PREFIX ps: <http://www.wikidata.org/prop/statement/>
+PREFIX pq: <http://www.wikidata.org/prop/qualifier/>
+PREFIX bd: <http://www.bigdata.com/rdf#>
 
 #------------------------------Requete INSERT---------------------------------
 # Requetes INSERT pour enrichir le graphe à partir de wikidata ou autres.
@@ -27,28 +34,49 @@ WHERE
 		rdfs:label ?depLabel .
 }
 
+# Ajouter un lien owl:sameAs entre les deputes et leur entité Wikidata.
 
-# Remplacer les lieux de naissance par des éléments du graphe politi:Commune.
-
-DELETE {
-    ?depu schema:birthPlace ?communeNaissance.
-}
 INSERT {
-    ?depu schema:birthPlace ?commune.
+    ?deputeLocal a politi:Depute ;
+        schema:name ?depLocalLabel ;
+        owl:sameAs ?depute .
 }
 WHERE {
-    ?depu a politi:Depute;
-    	schema:name ?depuName;
-    	schema:birthPlace ?communeNaissance.
+    # D'abord récupérer les députés locaux
+    ?deputeLocal schema:name ?depLocalLabel .
     
-    	?commune a politi:Commune; 
-            rdfs:label ?communeNaissance.
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?depute p:P39 ?statement .
+        ?statement ps:P39 wd:Q3044918 ;
+                   pq:P580 ?startTime .
+
+        FILTER NOT EXISTS { ?statement pq:P582 ?endTime . }
+        FILTER(?startTime >= "2020-01-01"^^xsd:dateTime)
+
+        ?depute rdfs:label ?deputeLabel .
+        FILTER(LANG(?deputeLabel) = "fr")
+    }
+    
+    # Comparaison en majuscules
+    FILTER(CONTAINS(UCASE(?deputeLabel), UCASE(?depLocalLabel)) || 
+       CONTAINS(UCASE(?depLocalLabel), UCASE(?deputeLabel)))
 }
 
 
 #------------------------------Requete SELECT---------------------------------
 #Requetes SELECT pour afficher et mettre en lien les données.
 
+# Images des députés depuis Wikidata après ajout des liens owl:sameAs.
+
+SELECT ?dep ?depLabel ?img
+WHERE {
+    ?dep a politi:Depute ;
+    	schema:name ?depLabel .
+    
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?dep wdt:P18 ?img .
+    }
+}
 
 # Nombre de députés par groupe parlementaire
 # Utilisé à des fins de vérification après conversion des données.
