@@ -38,6 +38,7 @@
     - [Correspondance entre les communes et les circonscriptions législatives](data/dept_communes_circo.csv)
     - [Indicateurs socio-économiques par circonscription législative](data/stat-circo-2022.csv)
     - [Description des indicateurs socio-économiques](data/stat-circo-info-variables.csv)
+- [Contours géographiques des circonscriptions législatives](https://www.data.gouv.fr/datasets/contours-geographiques-des-circonscriptions-legislatives/)
 
 ### Modifications effectuées
 
@@ -81,12 +82,20 @@ Nous avons également renommé toutes les variables (colonne 'Stat') pour enleve
 
 > Ceci afin de faciliter le mapping avec les données des statistiques par circonscription.
 
+Sur le dataset des [contours géographiques des circonscriptions législatives](data/contours-circo-legislatives-2022.geojson),
+nous avons converti le fichier GeoJSON en CSV avec [Aspose GIS Converter](https://products.aspose.app/gis/conversion/geojson-to-csv),
+afin de pouvoir l'importer dans OntoRefine, car le JSON ne fonctonnait pas.
+
+> Ceci car Wikidata ne possède pas les circonscriptions législatives françaises en tant qu'entités géographiques,
+> et nous voulions inclure les données géographiques dans le RDF.
+
 ## Outils
 
 - OntoRefine (Mappings & conversion RDF)
 - GraphDB (Repository)
 - [Schema.org](https://schema.org/) (Vocabulaire principal)
 - [OpenRefine GREL Functions](https://openrefine.org/docs/manual/grelfunctions) (Utilisation dans OntoRefine)
+- [Aspose GIS Converter](https://products.aspose.app/gis/conversion/geojson-to-csv) (Conversion GeoJSON vers CSV)
 
 ## Installation
 

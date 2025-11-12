@@ -1,0 +1,138 @@
+{
+  "baseIRI": "http://politiRDF.com/",
+  "namespaces": {
+    "group": "http://politiRDF.com/group/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "politi": "http://politiRDF.com/",
+    "schema": "http://schema.org/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "depu": "http://politiRDF.com/depute/",
+    "dept": "http://politiRDF.com/departement/",
+    "circo": "http://politiRDF.com/circonscription/",
+    "comm": "http://politiRDF.com/commune/",
+    "reg": "http://politiRDF.com/region/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "circogeo": "http://politiRDF.com/circonscription/geo/"
+  },
+  "subjectMappings": [
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "hasGeometry"
+            }
+          },
+          "values": [
+            {
+              "transformation": {
+                "expression": "circogeo",
+                "language": "prefix"
+              },
+              "valueSource": {
+                "columnName": "codeCirconscription",
+                "source": "column"
+              },
+              "valueType": {
+                "propertyMappings": [],
+                "type": "iri",
+                "typeMappings": []
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "circo",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "codeCirconscription",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "geo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Feature"
+          }
+        }
+      ]
+    },
+    {
+      "propertyMappings": [
+        {
+          "property": {
+            "transformation": {
+              "expression": "geo",
+              "language": "prefix"
+            },
+            "valueSource": {
+              "source": "constant",
+              "constant": "asWKT"
+            }
+          },
+          "values": [
+            {
+              "valueSource": {
+                "columnName": "WKT",
+                "source": "column"
+              },
+              "valueType": {
+                "type": "datatype_literal",
+                "datatype": {
+                  "transformation": {
+                    "expression": "geo",
+                    "language": "prefix"
+                  },
+                  "valueSource": {
+                    "source": "constant",
+                    "constant": "wktLiteral"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "subject": {
+        "transformation": {
+          "expression": "circogeo",
+          "language": "prefix"
+        },
+        "valueSource": {
+          "columnName": "codeCirconscription",
+          "source": "column"
+        }
+      },
+      "typeMappings": [
+        {
+          "transformation": {
+            "expression": "geo",
+            "language": "prefix"
+          },
+          "valueSource": {
+            "source": "constant",
+            "constant": "Geometry"
+          }
+        }
+      ]
+    }
+  ]
+}
