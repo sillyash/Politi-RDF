@@ -35,7 +35,8 @@ DELETE {
 }
 INSERT {
     ?depu schema:birthPlace ?commune.
-}WHERE {
+}
+WHERE {
     ?depu a politi:Depute;
     	schema:name ?depuName;
     	schema:birthPlace ?communeNaissance.
