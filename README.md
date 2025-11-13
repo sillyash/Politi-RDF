@@ -11,6 +11,7 @@
     - [Prérequis](#prérequis)
     - [Cloner le dépôt](#cloner-le-dépôt)
     - [Créer le repository dans GraphDB](#créer-le-repository-dans-graphdb)
+  - [Activer GeoSparQL](#activer-geosparql)
     - [Importer les données RDF](#importer-les-données-rdf)
 
 <!-- /TOC -->
@@ -124,6 +125,30 @@ git clone https://github.com/sillyash/Politi-RDF.git
 - Bien vérifier que 'Disable `owl:sameAs`' n'est pas coché
 - Cliquer sur 'Create'
 - Se connecter au repository créé
+
+## Activer GeoSparQL
+
+Activer GeoSparQL dans le repository en exécutant la requête SPARQL suivante:
+
+```sparql
+PREFIX geoSparql: <http://www.ontotext.com/plugins/geosparql#>
+PREFIX : <http://www.ontotext.com/plugins/geosparql#>
+
+INSERT DATA {
+    _:s :enabled "true";
+        :ignoreErrors "true";
+        :prefixTree "quad";     # geohash
+        :precision "25".        # ±6m precision
+}
+```
+
+Puis vérifier la configuration avec la requête:
+
+```sparql
+SELECT * WHERE {
+    <http://www.ontotext.com/plugins/geosparql> ?p ?o.
+}
+```
 
 ### Importer les données RDF
 
