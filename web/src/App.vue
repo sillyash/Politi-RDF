@@ -7,7 +7,11 @@ import AppFooter from './components/AppFooter.vue';
   <AppHeader />
 
   <main>
-    main
+    <h1 class="title">Politi-RDF</h1>
+    <p class="subtitle">
+      Récupérez des statistiques sur nos députés en un clin d'œil grâce à Politi-RDF,
+      votre source fiable pour des données parlementaires accessibles et compréhensibles.
+    </p>
   </main>
 
   <AppFooter />
@@ -21,6 +25,21 @@ header {
 .logo {
   display: block;
   margin: 0 auto 2rem;
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  width: 100%;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  color: var(--color-text-secondary);
 }
 
 @media (min-width: 1024px) {

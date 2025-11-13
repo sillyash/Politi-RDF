@@ -1,7 +1,7 @@
 <template>
   <header class="app-header">
     <div class="logo">
-      <img src="/favicon.ico" alt="App Logo" />
+      <img src="/favicon.png" alt="App Logo" />
       <span class="app-name">Politi-RDF</span>
     </div>
     <nav class="nav-links">
