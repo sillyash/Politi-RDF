@@ -24,14 +24,11 @@ export default {
 
   background-color: white;
   color: black;
-
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #ddd;
 
-  justify-content: space-between;
   align-items: center;
-  
   padding: 10px 20px;
+  position: relative;
 }
 
 .logo {
@@ -49,6 +46,12 @@ export default {
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
+}
+
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-links a {
