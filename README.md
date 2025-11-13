@@ -119,15 +119,17 @@ git clone https://github.com/sillyash/Politi-RDF.git
 ### Créer le repository dans GraphDB
 
 - Ouvrir GraphDB dans le navigateur
-- Aller dans 'Repositories' > 'Create new repository'
-- Type: GraphDB repository
-- Ruleset: RDFS Plus (Défaut)
-- Cocher: 'Disable owl:sameAs' (Défaut)
+- Aller dans 'Repositories' > 'Create new repository' > 'GraphDB repository'
+- Ruleset: `OWL-Horst (Optimized)`
+- Bien vérifier que 'Disable `owl:sameAs`' n'est pas coché
+- Cliquer sur 'Create'
+- Se connecter au repository créé
 
 ### Importer les données RDF
 
 - Aller dans 'Import' > 'Files'
 - Sélectionner tous les fichiers `.ttl` présents dans le dossier [`turtle/`](turtle/)
+- Target graphs: 'From data'
 - Cliquer sur 'Import'
 
 Les requêtes SPARQL sont dans [`requests.rq`](requests.rq).
