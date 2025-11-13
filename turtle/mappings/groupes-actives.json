@@ -227,16 +227,6 @@
             "source": "constant",
             "constant": "GroupeParlementaire"
           }
-        },
-        {
-          "transformation": {
-            "expression": "schema",
-            "language": "prefix"
-          },
-          "valueSource": {
-            "source": "constant",
-            "constant": "PoliticalParty"
-          }
         }
       ]
     }
