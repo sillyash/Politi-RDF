@@ -1,6 +1,7 @@
 <script setup>
 import AppHeader from './components/AppHeader.vue';
 import AppFooter from './components/AppFooter.vue';
+import GraphDBQuery from './components/GraphDBQuery.vue';
 </script>
 
 <template>
@@ -12,6 +13,8 @@ import AppFooter from './components/AppFooter.vue';
       Récupérez des statistiques sur nos députés en un clin d'œil grâce à Politi-RDF,
       votre source fiable pour des données parlementaires accessibles et compréhensibles.
     </p>
+
+    <GraphDBQuery />
   </main>
 
   <AppFooter />
