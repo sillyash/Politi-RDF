@@ -145,23 +145,38 @@ WHERE {
 ORDER BY ?depuLabel
 LIMIT 100
 
-# Moyenne de la proportion de propriétaires dans
+# Moyenne de la proportion de sans-emploi dans
 # les circonscriptions par parti politique
 
-SELECT ?partyAbbr ?partyName (AVG(?val) AS ?avg)
+SELECT ?groupName (AVG(?val) AS ?avg)
 WHERE {
     ?depu a politi:Depute ;
     	politi:circonscription ?circo ;
-    	schema:name ?depuLabel ;
-    	schema:memberOf ?parti .
+    	schema:memberOf ?group .
     
-    ?parti a schema:PoliticalParty ;
-    	rdfs:label ?partyName ;
-    	schema:alternateName ?partyAbbr .
+    ?group a politi:GroupeParlementaire ;
+    	rdfs:label ?groupName.
+    
+    ?circo politi:actCho ?val .
+}
+GROUP BY ?groupName
+ORDER BY DESC(?avg)
+
+# Moyenne de la proportion de propriétaires dans
+# les circonscriptions par parti politique
+
+SELECT ?groupName (AVG(?val) AS ?avg)
+WHERE {
+    ?depu a politi:Depute ;
+    	politi:circonscription ?circo ;
+    	schema:memberOf ?group .
+    
+    ?group a politi:GroupeParlementaire ;
+    	rdfs:label ?groupName.
     
     ?circo politi:proprio ?val .
 }
-GROUP BY ?partyAbbr ?partyName
+GROUP BY ?groupName
 ORDER BY DESC(?avg)
 
 # Proportion de retraités par départements
@@ -180,8 +195,10 @@ WHERE {
 
 
 
+#-----------------------------------------------------------------------
+#---------------------------- Ne marche pas ----------------------------
+#-----------------------------------------------------------------------
 
-#------------- Ne marche pas --------------
 
 # Députés nés dans une commune appartenant
 # à leur circonscription actuelle.
@@ -288,3 +305,23 @@ WHERE {
     	}
     }
 }GROUP BY ?depuNaissance
+
+
+# Moyenne de la proportion de propriétaires dans
+# les circonscriptions par parti politique
+
+SELECT ?partyAbbr ?partyName (AVG(?val) AS ?avg)
+WHERE {
+    ?depu a politi:Depute ;
+    	politi:circonscription ?circo ;
+    	schema:name ?depuLabel ;
+    	schema:memberOf ?parti .
+    
+    ?parti a schema:PoliticalParty ;
+    	rdfs:label ?partyName ;
+    	schema:alternateName ?partyAbbr .
+    
+    ?circo politi:proprio ?val .
+}
+GROUP BY ?partyAbbr ?partyName
+ORDER BY DESC(?avg)
