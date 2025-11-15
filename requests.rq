@@ -36,32 +36,47 @@ WHERE
 
 # Ajouter un lien owl:sameAs entre les deputes et leur entité Wikidata.
 
+# 1. Récupérer les députés Wikidata en exercice depuis 2020 dans un graphe local
+INSERT {
+    GRAPH <http://cache/wikidata> {
+        ?depute a politi:WikidataDepute ;
+                rdfs:label ?deputeLabel .
+    }
+}
+WHERE {
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?depute wdt:P39 wd:Q3044918 ;
+                p:P39 ?statement ;
+                rdfs:label ?deputeLabel .
+        
+        ?statement ps:P39 wd:Q3044918 ;
+                   pq:P580 ?startTime .
+        
+        FILTER NOT EXISTS { ?statement pq:P582 ?endTime }
+        FILTER(?startTime >= "2020-01-01"^^xsd:dateTime)
+        FILTER(LANG(?deputeLabel) = "fr")
+    }
+}
+
+# 2. Ajouter les liens owl:sameAs
 INSERT {
     ?deputeLocal a politi:Depute ;
         schema:name ?depLocalLabel ;
         owl:sameAs ?depute .
 }
 WHERE {
-    # D'abord récupérer les députés locaux
     ?deputeLocal schema:name ?depLocalLabel .
     
-    SERVICE <https://query.wikidata.org/sparql> {
-        ?depute p:P39 ?statement .
-        ?statement ps:P39 wd:Q3044918 ;
-                   pq:P580 ?startTime .
-
-        FILTER NOT EXISTS { ?statement pq:P582 ?endTime . }
-        FILTER(?startTime >= "2020-01-01"^^xsd:dateTime)
-
-        ?depute rdfs:label ?deputeLabel .
-        FILTER(LANG(?deputeLabel) = "fr")
+    # Query local cache instead of federated query
+    GRAPH <http://cache/wikidata> {
+        ?depute a politi:WikidataDepute ;
+                rdfs:label ?deputeLabel .
     }
     
-    # Comparaison en majuscules
-    FILTER(CONTAINS(UCASE(?deputeLabel), UCASE(?depLocalLabel)) || 
-       CONTAINS(UCASE(?depLocalLabel), UCASE(?deputeLabel)))
+    BIND(UCASE(?depLocalLabel) AS ?localNorm)
+    BIND(UCASE(?deputeLabel) AS ?deputeNorm)
+    FILTER(CONTAINS(?deputeNorm, ?localNorm) || CONTAINS(?localNorm, ?deputeNorm))
 }
-
 
 #------------------------------Requete SELECT---------------------------------
 #Requetes SELECT pour afficher et mettre en lien les données.
