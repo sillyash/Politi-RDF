@@ -89,24 +89,7 @@ SELECT ?dep ?depLabel ?img
 WHERE {
     ?dep a politi:Depute ;
          schema:name ?depLabel ;
-         owl:sameAs ?wdEntity .
-    
-    SERVICE <https://query.wikidata.org/sparql> {
-        ?wdEntity wdt:P18 ?img .
-    }
-}
-
-#--- version avec graphe en cache ----
-
-SELECT ?dep ?depLabel ?img
-WHERE {
-    ?dep a politi:Depute ;
-    	schema:name ?depLabel;
-    	owl:sameAs ?wdEntity .
-    
-    GRAPH <http://cache/wikidata>  {
-        ?wdEntity schema:image ?img .
-    }
+         schema:image ?img .
 }
 
 # Nombre de députés par groupe parlementaire
