@@ -90,13 +90,6 @@ export default {
   },
 
   methods: {
-    setupDB() {
-      GraphDBClient.configure(
-        'http://localhost:7200/repositories',
-        'PolitiRDF'
-      );
-    },
-
     async runQuery() {
       try {
         this.loading = true;
@@ -116,10 +109,6 @@ export default {
         this.loading = false;
       }
     },
-  },
-
-  created() {
-    this.setupDB();
   },
 };
 </script>
