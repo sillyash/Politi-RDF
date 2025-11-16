@@ -49,17 +49,31 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
   static async query<T = any>(sparqlQuery: string): Promise<T> {
     const url = `${GraphDBClient.getQueryUrl()}`;
     
+    const params = new URLSearchParams();
+    params.set('query', `${GraphDBClient.DEFAULT_PREFIXES}\n${sparqlQuery}`);
+
     const response = await fetch(url, {
       method: 'POST',
-      body: `${GraphDBClient.DEFAULT_PREFIXES}\n${sparqlQuery}`,
+      body: params.toString(),
       signal: AbortSignal.timeout(GraphDBClient.TIMEOUT),
-      headers: { 'Content-Type': GraphDBClient.CONTENT_TYPE_SPARQL_QUERY, },
+      headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Accept': 'application/rdf+xml',
+      },
     });
 
     if (!response.ok) {
       const errorText = await response.text();
       throw new Error(
-        `GraphDB query failed: ${response.status} - ${errorText}`
+        `
+        GraphDB query failed: ${response.status} - ${errorText}
+        Query: ${sparqlQuery}
+        cURL command:
+        curl -X POST '${url}'
+        -H 'Content-Type: application/x-www-form-urlencoded'
+        -H 'Accept: application/rdf+xml'
+        --data-urlencode 'query=${GraphDBClient.DEFAULT_PREFIXES}\n${sparqlQuery}'
+        `
       );
     }
     
