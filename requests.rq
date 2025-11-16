@@ -80,6 +80,19 @@ WHERE {
     FILTER(CONTAINS(?deputeNorm, ?localNorm) || CONTAINS(?localNorm, ?deputeNorm))
 }
 
+
+# Ajouter les partis
+INSERT {
+    ?dep schema:PoliticalParty ?wikiParti.
+
+} WHERE {
+    ?dep a politi:Depute.
+    
+    SERVICE <https://query.wikidata.org/sparql> {
+    	?dep wdt:P102 ?wikiParti.
+    }
+}
+
 #------------------------------Requete SELECT---------------------------------
 #Requetes SELECT pour afficher et mettre en lien les données.
 
@@ -88,8 +101,8 @@ WHERE {
 SELECT ?dep ?depLabel ?img
 WHERE {
     ?dep a politi:Depute ;
-         schema:name ?depLabel ;
-         schema:image ?img .
+        schema:name ?depLabel ;
+        schema:image ?img .
 }
 
 # Nombre de députés par groupe parlementaire
