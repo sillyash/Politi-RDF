@@ -3,15 +3,18 @@
 <!-- TOC -->
 
 - [Politi RDF](#politi-rdf)
-  - [Structure](#structure)
-  - [Datasets](#datasets)
-    - [Modifications effectuées](#modifications-effectuées)
-  - [Outils](#outils)
-  - [Installation](#installation)
-    - [Prérequis](#prérequis)
-    - [Cloner le dépôt](#cloner-le-dépôt)
-    - [Créer le repository dans GraphDB](#créer-le-repository-dans-graphdb)
-    - [Importer les données RDF](#importer-les-données-rdf)
+    - [Structure](#structure)
+    - [Datasets](#datasets)
+        - [Modifications effectuées](#modifications-effectu%C3%A9es)
+    - [Outils](#outils)
+    - [Reproduction de l'enrichissement avec Wikidata](#reproduction-de-lenrichissement-avec-wikidata)
+    - [Installation](#installation)
+        - [Prérequis](#pr%C3%A9requis)
+        - [Cloner le dépôt](#cloner-le-d%C3%A9p%C3%B4t)
+        - [Faire touner le proxy](#faire-touner-le-proxy)
+        - [Créer le repository dans GraphDB](#cr%C3%A9er-le-repository-dans-graphdb)
+        - [Importer les données RDF](#importer-les-donn%C3%A9es-rdf)
+        - [Faire tourner l'appli web](#faire-tourner-lappli-web)
 
 <!-- /TOC -->
 
@@ -20,8 +23,15 @@
 ```text
 .
 ├───data/           # Données brutes (CSV)
-└───turtle/         # Fichiers RDF (Turtle)
-    └───mappings/   # Mappings OntoText Refine (JSON)
+├───proxy/          # Proxy pour l'appli web (Python)
+├───turtle/         # Fichiers RDF (Turtle)
+│   └───mappings/   # Mappings OntoText Refine (JSON)
+└───web             # Appli web (VueJS)
+    ├───public
+    └───src
+        ├───assets
+        ├───components  # VueJS code
+        └───plugins     # GraphDB middleware
 ```
 
 - Les données brutes sont dans le dossier [data](data/).
@@ -38,7 +48,7 @@
     - [Correspondance entre les communes et les circonscriptions législatives](data/dept_communes_circo.csv)
     - [Indicateurs socio-économiques par circonscription législative](data/stat-circo-2022.csv)
     - [Description des indicateurs socio-économiques](data/stat-circo-info-variables.csv)
-- [Contours géographiques des circonscriptions législatives](https://www.data.gouv.fr/datasets/contours-geographiques-des-circonscriptions-legislatives/)
+- [Contours géographiques des circonscriptions législatives](https://www.insee.fr/fr/statistiques/6441661?sommaire=6436478)
 
 ### Modifications effectuées
 
@@ -82,8 +92,8 @@ Nous avons également renommé toutes les variables (colonne 'Stat') pour enleve
 
 > Ceci afin de faciliter le mapping avec les données des statistiques par circonscription.
 
-Sur le dataset des [contours géographiques des circonscriptions législatives](data/contours-circo-legislatives-2022.geojson),
-nous avons converti le fichier GeoJSON en CSV avec [Aspose GIS Converter](https://products.aspose.app/gis/conversion/geojson-to-csv),
+Sur le dataset des [contours géographiques des circonscriptions législatives](data/circonscriptions-legislatives-p20.csv),
+nous avons converti le fichier Shapefile en CSV avec [QGIS](https://qgis.org/),
 afin de pouvoir l'importer dans OntoRefine, car le JSON ne fonctonnait pas.
 
 > Ceci car Wikidata ne possède pas les circonscriptions législatives françaises en tant qu'entités géographiques,
@@ -94,13 +104,27 @@ Il a fallu une formule Excel puis des ajustements à la main.
 
 > Ceci afin de faciliter le mapping avec les données des circonscriptions.
 
+> [!warning]
+>
+> Cependant, GraphDB semble avoir des problèmes dans la version Free pour
+> indexer les données WKT GeoSparql, donc les mappings et les fichiers
+> Turtle existent, mais nous n'avons pas pu les utiliser.
+
 ## Outils
 
 - OntoRefine (Mappings & conversion RDF)
 - GraphDB (Repository)
 - [Schema.org](https://schema.org/) (Vocabulaire principal)
 - [OpenRefine GREL Functions](https://openrefine.org/docs/manual/grelfunctions) (Utilisation dans OntoRefine)
-- [Aspose GIS Converter](https://products.aspose.app/gis/conversion/geojson-to-csv) (Conversion GeoJSON vers CSV)
+- [QGIS](https://qgis.org/) (Conversion Shapefile vers CSV)
+
+## Reproduction de l'enrichissement avec Wikidata
+
+Les fichier Turtle avant modifications sont dans le dossier [`turtle/`](turtle/).
+
+Seul le fichier `full.ttl` contient le dépôt en entier, après liaison avec Wikidata
+
+Les requêtes SPARQL (dont les requêtes CREATE et INSERT) sont dans [`requests.rq`](requests.rq).
 
 ## Installation
 
@@ -108,7 +132,9 @@ Il a fallu une formule Excel puis des ajustements à la main.
 
 - Git
 - Git LFS
-- GraphDB
+- GraphDB >= 11.0
+- Python >= 3.8
+- NodeJS & npm
 
 ### Cloner le dépôt
 
@@ -116,10 +142,28 @@ Il a fallu une formule Excel puis des ajustements à la main.
 git clone https://github.com/sillyash/Politi-RDF.git
 ```
 
+### Faire touner le proxy
+
+Installer les dépendances Python:
+
+```bash
+cd proxy
+./setup.sh
+```
+
+Faire tourner le proxy:
+
+```bash
+python main.py
+```
+
 ### Créer le repository dans GraphDB
+
+Lancez GraphDB.
 
 - Ouvrir GraphDB dans le navigateur
 - Aller dans 'Repositories' > 'Create new repository' > 'GraphDB repository'
+- Nom du dépôt: **PolitiRDF** (nécessaire pour le fontionnement de l'appli web)
 - Ruleset: `OWL-Horst (Optimized)`
 - Bien vérifier que 'Disable `owl:sameAs`' n'est pas coché
 - Cliquer sur 'Create'
@@ -128,8 +172,23 @@ git clone https://github.com/sillyash/Politi-RDF.git
 ### Importer les données RDF
 
 - Aller dans 'Import' > 'Files'
-- Sélectionner tous les fichiers `.ttl` présents dans le dossier [`turtle/`](turtle/)
+- Sélectionner le fichier `full.ttl` dans le dossier [`turtle/`](turtle/)
 - Target graphs: 'From data'
 - Cliquer sur 'Import'
 
-Les requêtes SPARQL sont dans [`requests.rq`](requests.rq).
+### Faire tourner l'appli web
+
+Installer les dépendances NodeJS:
+
+```bash
+cd web
+npm install
+```
+
+Faire tourner le serveur local:
+
+```bash
+npm run dev
+```
+
+http://localhost:5173
