@@ -21,9 +21,7 @@ PREFIX bd: <http://www.bigdata.com/rdf#>
 INSERT {
     ?dep owl:sameAs ?wikidataDepartment ;
     	politi:coord ?coord.
-}
-WHERE
-{
+} WHERE {
     service <https://query.wikidata.org/sparql> {
     	?wikidataDepartment wdt:P31 wd:Q6465;
         					wdt:P625 ?coord;
@@ -98,7 +96,7 @@ INSERT {
 
 # Images des députés depuis Wikidata après ajout des liens owl:sameAs.
 
-SELECT ?dep ?depLabel ?img
+SELECT DISTINCT ?depLabel ?img
 WHERE {
     ?dep a politi:Depute ;
         schema:name ?depLabel ;
@@ -108,13 +106,10 @@ WHERE {
 # Nombre de députés par groupe parlementaire
 # Utilisé à des fins de vérification après conversion des données.
 
-SELECT ?groupAbbrev ?groupLabel ?color (COUNT(?depu) AS ?nbDeputes)
+SELECT  ?groupLabel (COUNT(?depu) AS ?nbDeputes)
 WHERE {
-    ?group rdfs:label ?groupLabel ;
-    	schema:alternateName ?groupAbbrev ;
-    	schema:color ?color .
-
     ?depu schema:memberOf ?group .
+    ?group rdfs:label ?groupLabel .
 } 
 GROUP BY ?groupAbbrev ?groupLabel ?color
 ORDER BY DESC(?nbDeputes)
@@ -155,12 +150,10 @@ WHERE {
     	rdfs:describe ?desc .
 }
 ORDER BY ?depuLabel
-LIMIT 100
 
-# Moyenne de la proportion de sans-emploi dans
-# les circonscriptions par parti politique
+# Moyennes statistiques dans les circonscriptions, moyennées par groupe parlementaire
 
-SELECT ?groupName (AVG(?val) AS ?avg)
+SELECT ?groupName (AVG(?val1) AS ?txPauvrete) (AVG(?val2) AS ?ageMoy) (AVG(?val3) AS ?accEcole) (AVG(?val4) AS ?inactRet) (AVG(?val5) AS ?inactEtu) (AVG(?val6) AS ?actempFem) (AVG(?val7) AS ?iltEtr) (AVG(?val8) AS ?popUrb)
 WHERE {
     ?depu a politi:Depute ;
     	politi:circonscription ?circo ;
@@ -169,10 +162,40 @@ WHERE {
     ?group a politi:GroupeParlementaire ;
     	rdfs:label ?groupName.
     
-    ?circo politi:actCho ?val .
+    ?circo politi:txPauvrete60DiffTrageRF1 ?val1 ;
+    	    politi:ageMoyen ?val2 ;
+    	    politi:accEcole ?val3 ;
+    	    politi:inactret ?val4 ;
+    	    politi:inactetu ?val5 ;
+    		politi:actempFem ?val6 ;
+    		politi:iltEtr ?val7 ;
+    		politi:popUrb ?val8 .
 }
 GROUP BY ?groupName
-ORDER BY DESC(?avg)
+ORDER BY ?groupName
+
+
+# Et moyennées par parti politique
+
+SELECT ?partiLabel (AVG(?val1) AS ?txPauvrete) (AVG(?val2) AS ?ageMoy) (AVG(?val3) AS ?accEcole) (AVG(?val4) AS ?inactRet) (AVG(?val5) AS ?inactEtu) (AVG(?val6) AS ?actempFem) (AVG(?val7) AS ?iltEtr) (AVG(?val8) AS ?popUrb)
+WHERE {
+    ?depu a politi:Depute ;
+    	politi:circonscription ?circo ;
+    	schema:PoliticalParty ?parti .
+    
+    ?parti rdfs:label ?partiLabel .
+    
+    ?circo politi:txPauvrete60DiffTrageRF1 ?val1 ;
+    	    politi:ageMoyen ?val2 ;
+    	    politi:accEcole ?val3 ;
+    	    politi:inactret ?val4 ;
+    	    politi:inactetu ?val5 ;
+    		politi:actempFem ?val6 ;
+    		politi:iltEtr ?val7 ;
+    		politi:popUrb ?val8 .
+}
+GROUP BY ?partiLabel
+ORDER BY ?partiLabel
 
 # Moyenne de la proportion de propriétaires dans
 # les circonscriptions par parti politique
@@ -190,6 +213,21 @@ WHERE {
 }
 GROUP BY ?groupName
 ORDER BY DESC(?avg)
+
+# Et par parti politique
+
+SELECT ?groupName (AVG(?val) AS ?proprietaires)
+WHERE {
+    ?depu a politi:Depute ;
+    	politi:circonscription ?circo ;
+    	schema:PoliticalParty ?group .
+    
+    ?group rdfs:label ?groupName .
+    
+    ?circo politi:proprio ?val .
+}
+GROUP BY ?groupName
+ORDER BY DESC(?proprietaires)
 
 # Proportion de retraités par départements
 # Renvoie également les coordonnées pour affichage sur une carte.
@@ -337,3 +375,84 @@ WHERE {
 }
 GROUP BY ?partyAbbr ?partyName
 ORDER BY DESC(?avg)
+
+# Requête finale
+# On a inventé un index de fragilité du territoire
+# On a regroupé les statistiques par département pour accentuer la dimension géographique et locale et éviter un biais trop local
+# On a ensuite calculé les partis et groupes dominants dans ces départements
+
+SELECT 
+    ?depLabel
+    (COUNT(DISTINCT ?depu) AS ?nbDeputes)
+    (COUNT(DISTINCT ?parti) AS ?nbPartis)
+    (AVG(?txPauv) AS ?avgPauvrete)
+    (AVG(?age) AS ?ageMoyen)
+    (AVG(?urb) AS ?populationUrb)
+    (AVG(?inactRet) AS ?inactRetraites)
+    (AVG(?inactEtu) AS ?inactEtudiants)
+((AVG(?txPauv) * 0.6) + (AVG(?inactRet) * 0.2) + (AVG(?inactEtu) * 0.2) AS ?fragilityIndex)
+    (SAMPLE(?coord) AS ?coordSample)
+    (SAMPLE(?domPartyLabel) AS ?dominantParty)
+    (SAMPLE(?domGroupLabel) AS ?dominantGroup)
+WHERE {
+
+    ?dep a politi:Departement ;
+         rdfs:label ?depLabel .
+    OPTIONAL { ?dep politi:coord ?coord . }
+
+    ### CIRCO + SOCIO DATA
+    ?circo schema:containedIn ?dep ;
+           politi:txPauvrete60DiffTrageRF1 ?txPauv ;
+           politi:ageMoyen ?age ;
+           politi:popUrb ?urb ;
+           politi:inactret ?inactRet ;
+           politi:inactetu ?inactEtu .
+
+    ### DEPUTE DATA
+    ?depu a politi:Depute ;
+          politi:circonscription ?circo ;
+          schema:PoliticalParty ?parti ;
+          schema:memberOf ?group .
+
+    ?parti rdfs:label ?partiLabel .
+    ?group rdfs:label ?groupLabel .
+
+	### Parti maj par departement
+    {
+        SELECT ?dep (SAMPLE(?pLabel) AS ?domPartyLabel)
+        WHERE {
+            SELECT ?dep ?pLabel (COUNT(?depu) AS ?cnt)
+            WHERE {
+                ?depu a politi:Depute ;
+                      politi:circonscription ?circoA ;
+                      schema:PoliticalParty ?partiA .
+                ?circoA schema:containedIn ?dep .
+                ?partiA rdfs:label ?pLabel .
+            }
+            GROUP BY ?dep ?pLabel
+        }
+        GROUP BY ?dep
+        ORDER BY DESC(?cnt)
+    }
+
+    ### Groupe maj par departement
+    {
+        SELECT ?dep (SAMPLE(?gLabel) AS ?domGroupLabel)
+        WHERE {
+            SELECT ?dep ?gLabel (COUNT(?depu) AS ?cnt2)
+            WHERE {
+                ?depu a politi:Depute ;
+                      politi:circonscription ?circoB ;
+                      schema:memberOf ?groupB .
+                ?circoB schema:containedIn ?dep .
+                ?groupB rdfs:label ?gLabel .
+            }
+            GROUP BY ?dep ?gLabel
+        }
+        GROUP BY ?dep
+        ORDER BY DESC(?cnt2)
+    }
+}
+GROUP BY ?depLabel
+ORDER BY DESC(?fragilityIndex)
+

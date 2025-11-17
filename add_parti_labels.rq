@@ -1,0 +1,70 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+INSERT DATA {
+    wd:Q327591 rdfs:label "indépendant"@fr .
+    wd:Q173152 rdfs:label "Union pour un mouvement populaire"@fr .
+    wd:Q192821 rdfs:label "Parti communiste français"@fr .
+    wd:Q12962 rdfs:label "Debout la France"@fr .
+    wd:Q12968 rdfs:label "Rassemblement national de la jeunesse"@fr .
+    wd:Q82892 rdfs:label "Union des démocrates et indépendants"@fr .
+    wd:Q170972 rdfs:label "Parti socialiste"@fr .
+    wd:Q427965 rdfs:label "Parti radical de gauche"@fr .
+    wd:Q545900 rdfs:label "Vert'libéraux"@fr .
+    wd:Q587370 rdfs:label "Mouvement démocrate"@fr .
+    wd:Q205150 rdfs:label "Rassemblement national"@fr .
+    wd:Q613786 rdfs:label "Les Écologistes – Europe Écologie Les Verts"@fr .
+    wd:Q668248 rdfs:label "Euskal Herria Bai"@fr .
+    wd:Q686372 rdfs:label "Démocratie libérale"@fr .
+    wd:Q743390 rdfs:label "Les Verts"@fr .
+    wd:Q762083 rdfs:label "Alliance centriste"@fr .
+    wd:Q827415 rdfs:label "Union pour la démocratie française"@fr .
+    wd:Q1045425 rdfs:label "Nouveau Parti anticapitaliste"@fr .
+    wd:Q1052584 rdfs:label "Rassemblement pour la République"@fr .
+    wd:Q853418 rdfs:label "Les Centristes"@fr .
+    wd:Q862627 rdfs:label "Ligue communiste révolutionnaire"@fr .
+    wd:Q870654 rdfs:label "Mouvement pour la France"@fr .
+    wd:Q922707 rdfs:label "Parti de gauche"@fr .
+    wd:Q1054196 rdfs:label "Centre des démocrates sociaux"@fr .
+    wd:Q1230558 rdfs:label "divers droite"@fr .
+    wd:Q1230566 rdfs:label "divers gauche"@fr .
+    wd:Q1321802 rdfs:label "Mouvement républicain et citoyen"@fr .
+    wd:Q1469596 rdfs:label "Mouvement national républicain"@fr .
+    wd:Q1542710 rdfs:label "Parti radical"@fr .
+    wd:Q2054444 rdfs:label "Parti communiste réunionnais"@fr .
+    wd:Q2300622 rdfs:label "républicains indépendants"@fr .
+    wd:Q2934607 rdfs:label "Calédonie ensemble"@fr .
+    wd:Q3240530 rdfs:label "Ligue du Sud"@fr .
+    wd:Q3272709 rdfs:label "MARS - Gauche républicaine"@fr .
+    wd:Q23691290 rdfs:label "Tapura Huiraatira"@fr .
+    wd:Q23731823 rdfs:label "Renaissance"@fr .
+    wd:Q23808504 rdfs:label "Pè a Corsica"@fr .
+    wd:Q3326782 rdfs:label "Pour La Réunion"@fr .
+    wd:Q3326813 rdfs:label "Mouvement pour une alternative républicaine et sociale"@fr .
+    wd:Q3366608 rdfs:label "Parti populiste"@fr .
+    wd:Q3419877 rdfs:label "Rassemblement Bleu Marine"@fr .
+    wd:Q3550126 rdfs:label "Groupe Union des démocrates et indépendants"@fr .
+    wd:Q15985232 rdfs:label "Ensemble !"@fr .
+    wd:Q20012759 rdfs:label "Les Républicains"@fr .
+    wd:Q27978402 rdfs:label "La France insoumise"@fr .
+    wd:Q29348702 rdfs:label "Front de gauche"@fr .
+    wd:Q30741057 rdfs:label "Rézistan's Égalité 974"@fr .
+    wd:Q31400965 rdfs:label "Génération.s"@fr .
+    wd:Q43807777 rdfs:label "Agir, la droite constructive"@fr .
+    wd:Q45149423 rdfs:label "Mouvement radical"@fr .
+    wd:Q51844819 rdfs:label "Révolution écologique pour le vivant"@fr .
+    wd:Q58329311 rdfs:label "Gauche républicaine et socialiste"@fr .
+    wd:Q58366009 rdfs:label "Place publique"@fr .
+    wd:Q62079328 rdfs:label "Debout !"@fr .
+    wd:Q64503948 rdfs:label "Libres"@fr .
+    wd:Q80196524 rdfs:label "Générations NC"@fr .
+    wd:Q87070507 rdfs:label "Allons enfants"@fr .
+    wd:Q104212739 rdfs:label "Les Nouveaux Démocrates"@fr .
+    wd:Q107877569 rdfs:label "Front national"@fr .
+    wd:Q108846587 rdfs:label "Horizons"@fr .
+    wd:Q109932430 rdfs:label "Reconquête"@fr .
+    wd:Q112672999 rdfs:label "Groupe Horizons et apparentés"@fr .
+    wd:Q127038760 rdfs:label "Union des droites pour la République"@fr .
+    wd:Q127413320 rdfs:label "L'Après"@fr .
+    wd:Q130517388 rdfs:label "Identité-Libertés"@fr .
+}
